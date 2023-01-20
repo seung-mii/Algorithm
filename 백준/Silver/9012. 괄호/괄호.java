@@ -13,13 +13,13 @@ public class Main {
                 if(str.charAt(j) == 40) left++;
                 else left--;
 
-                if(left < 0) {
-                    sb.append("NO").append('\n');
+                if(left < 0) { // 열린 괄호만큼 닫히지 않았을 때
+                    sb.append("NO \n");
                     break;
                 }
             }
-            if(left == 0) sb.append("YES").append('\n');
-            else if(left > 0) sb.append("NO").append('\n');
+            if(left == 0) sb.append("YES \n");
+            else if(left > 0) sb.append("NO \n");
         }
         System.out.println(sb);
     }
