@@ -8,14 +8,10 @@ class Solution {
             babbling[i] = babbling[i].replaceFirst("ye", "0");
             babbling[i] = babbling[i].replaceFirst("ma", "0");
             babbling[i] = babbling[i].replace("0", "");
-            System.out.print(babbling[i] + " ");
             
-            if(babbling[i].equals("")){
-                answer = answer + 1;
-            }
-            // if(babbling[i] =) answer++;
+            if(babbling[i].equals("")) answer++;
         }
-
+        
         return answer;
     }
 }
