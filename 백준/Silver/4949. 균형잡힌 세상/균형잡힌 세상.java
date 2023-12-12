@@ -3,33 +3,34 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String s;
 
-        while(true) {
-            s = in.nextLine();
-            if(s.equals(".")) break;
-            System.out.println(sentence(s));
+        while (true) {
+            String s = in.nextLine();
+
+            if (s.charAt(0) == '.') break;
+            System.out.println(result(s));
         }
     }
 
-    public static String sentence(String s) {
+    static String result(String s) {
         Stack<Character> stack = new Stack<>();
 
-        for(int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
-            if(c == '(' || c == '[') stack.push(c);
-            else if(c == ')') {
-                if(stack.empty() || stack.peek() != '(') return "no";
+            if (c == '(' || c == '[') stack.push(c);
+            else if (c == ')') {
+                if (stack.empty()) return "no";
+                else if (stack.peek() != '(') return "no";
                 else stack.pop();
-            }
-            else if(c == ']') {
-                if(stack.empty() || stack.peek() != '[') return "no";
+            } else if (c == ']') {
+                if (stack.empty()) return "no";
+                else if (stack.peek() != '[') return "no";
                 else stack.pop();
             }
         }
 
-        if(stack.empty()) return "yes";
+        if (stack.empty()) return "yes";
         else return "no";
     }
 }
