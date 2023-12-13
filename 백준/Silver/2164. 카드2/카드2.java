@@ -13,11 +13,10 @@ public class Main {
 
         while (q.size() != 1) {
             q.poll();
-
-            int n = q.poll();
-            q.offer(n);
+            int num = q.poll();
+            q.offer(num);
         }
-        
-        System.out.println(q.peek());
+
+        System.out.print(q.poll());
     }
 }
