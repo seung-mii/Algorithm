@@ -4,19 +4,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Queue<Integer> q = new LinkedList<>();
-
         int N = in.nextInt();
 
         for (int i = 1; i < N + 1; i++) {
             q.offer(i);
         }
 
-        while (q.size() != 1) {
+        while(q.size() != 1) {
             q.poll();
-            int num = q.poll();
-            q.offer(num);
+            q.offer(q.poll());
         }
-
-        System.out.print(q.poll());
+        System.out.print(q.peek());
     }
 }
