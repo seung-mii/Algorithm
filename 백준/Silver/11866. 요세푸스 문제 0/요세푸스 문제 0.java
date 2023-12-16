@@ -2,32 +2,22 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int N = s.nextInt();
-        int K = s.nextInt();
-
+        Scanner in = new Scanner(System.in);
         Queue<Integer> q = new LinkedList<>();
+        int N = in.nextInt();
+        int K = in.nextInt();
 
-        for(int i = 1; i < N+1; i++) {
-            q.add(i);
+        for (int i = 1; i < N + 1; i++) {
+            q.offer(i);
         }
 
-        int count = 0;
         System.out.print("<");
-        while(!q.isEmpty()) {
-            count++;
-
-            if(q.size() == 1) {
-                System.out.print(q.poll());
-                break;
+        while (q.size() != 1) {
+            for (int i = 0; i < K - 1; i++) {
+                q.offer(q.poll());
             }
-
-            if(count % K == 0) System.out.print(q.poll() + ", ");
-            else {
-                int temp = q.poll();
-                q.offer(temp);
-            }
+            System.out.print(q.poll() + ", ");
         }
-        System.out.print(">");
+        System.out.print(q.peek() + ">");
     }
 }
