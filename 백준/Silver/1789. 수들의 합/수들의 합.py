@@ -1,13 +1,11 @@
 s = int(input())
-start = 1
 n = 0
 
-while True:
-  if s < start:
+for i in range(1, s + 1):
+  if s < i:
     break
   else:
-    s -= start 
-    start += 1
+    s -= i 
     n += 1
 
 print(n)
