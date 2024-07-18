@@ -8,13 +8,11 @@ count = 0
 for _ in range(j):
     position = int(input())
  
-    if left <= position and right >= position:
-        continue
-    elif left > position:
+    if left > position:
         count += (left-position)
         right -= (left-position)
         left = position
-    else:
+    elif right < position:
         count += (position-right)
         left += (position-right)
         right = position
