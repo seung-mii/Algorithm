@@ -1,16 +1,14 @@
 import sys
 input = sys.stdin.readline
 
-N, M = map(int, input().rstrip().split())
-P = sorted((int(input()) for _ in range(M)), reverse = True)
+n,m = map(int, input().split())
+cus = sorted([int(input()) for _ in range(m)], reverse=True)
 
-max_profit = 0
 price = 0
-
-for i in range(min(M, N)):
-    profit = (i+1) * P[i]
-    if max_profit <= profit:
-        price = P[i]
-        max_profit = profit
-        
-print(price, max_profit)
+revenue = 0
+for i in range(min(n, m)):
+  if revenue <= cus[i] * (i+1):
+    price = cus[i]
+    revenue = cus[i] * (i+1)
+  
+print(price,revenue)
