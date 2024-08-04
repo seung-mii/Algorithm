@@ -11,14 +11,11 @@ def bs(ary, l, switch):
   while start <= end:
     mid = (start + end) // 2
 
-    if ary[mid] < l:
-      i = mid
-      start = mid + 1
-    elif ary[mid] == l:
-      i = (mid - 1 if switch == 1 else mid)
-      start = mid + 1
+    if ary[mid] <= l:
+        i = (mid - 1 if switch == 1 and ary[mid] == l else mid)
+        start = mid + 1
     else:
-      end = mid - 1
+        end = mid - 1
 
   return i
 
