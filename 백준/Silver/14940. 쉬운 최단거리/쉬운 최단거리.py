@@ -20,7 +20,6 @@ for i in range(n):
 
 def bfs(x, y):
   q = deque([(x, y)])
-  visited[x][y] = 0
 
   while q:
     x, y = q.popleft()
@@ -35,11 +34,10 @@ def bfs(x, y):
 
 bfs(goal_x, goal_y)
 
+visited[goal_x][goal_y] = 0
 for i in range(n):
   for j in range(m):
     if visited[i][j] == -1:
-      print(0, end=' ')
-    elif i == goal_x and j == goal_y:
       print(0, end=' ')
     elif visited[i][j] == 0 and graph[i][j] == 1:
       print(-1, end=' ')
