@@ -1,10 +1,9 @@
 def solution(babbling):
     languge = ['aya', 'ye', 'woo', 'ma']
-    no = ['ayaaya', 'yeye', 'woowoo', 'mama']
     answer = 0
     
     for b in babbling:
-        if any(babbling in b for babbling in no): 
+        if "ayaaya" in b or "yeye" in b or "woowoo" in b or "mama" in b:
             continue
             
         for l in languge:
