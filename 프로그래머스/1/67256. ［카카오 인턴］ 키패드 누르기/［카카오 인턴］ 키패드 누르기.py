@@ -1,50 +1,28 @@
 def solution(numbers, hand):
     answer = ''
-    cur = [[0, 3], [2, 3]]  # 0 2 1 3
+    cur = [[0, 3], [2, 3]] 
+    hand = 'R' if hand == 'right' else 'L' 
     
-    for n in numbers: # 8
-        if n == 1 or n == 4 or n == 7:
-            answer += 'L' 
-            cur[0][0] = (n-1) % 3 # 0 
-            cur[0][1] = (n-1) // 3 # 2
-        elif n == 3 or n == 6 or n == 9:
+    for n in numbers:
+        if n in [1, 4, 7]: 
+            answer += 'L'
+            cur[0] = [(n - 1) % 3, (n - 1) // 3]
+        elif n in [3, 6, 9]: 
             answer += 'R'
-            cur[1][0] = (n-1) % 3
-            cur[1][1] = (n-1) // 3
-        elif n == 2 or n == 5 or n == 8:
-            left_length = abs(cur[0][0] - ((n-1) % 3)) + abs(cur[0][1] - ((n-1) // 3))  # 1 + 0 = 1
-            right_length = abs(cur[1][0] - ((n-1) % 3)) + abs(cur[1][1] - ((n-1) // 3)) # 0 + 1 = 1 
+            cur[1] = [(n - 1) % 3, (n - 1) // 3]
+        else: 
+            target = [(n - 1) % 3 if n != 0 else 1, (n - 1) // 3 if n != 0 else 3]
+            left_length = abs(cur[0][0] - target[0]) + abs(cur[0][1] - target[1])
+            right_length = abs(cur[1][0] - target[0]) + abs(cur[1][1] - target[1])
 
             if left_length == right_length:
-                if hand == 'right':
-                    answer += 'R'
-                    cur[1] = [(n-1) % 3, (n-1) // 3]
-                else:
-                    answer += 'L'
-                    cur[0] = [(n-1) % 3, (n-1) // 3]
+                answer += hand
+                cur[0 if hand == 'L' else 1] = target
             elif left_length < right_length:
                 answer += 'L'
-                cur[0] = [(n-1) % 3, (n-1) // 3]
+                cur[0] = target
             else:
                 answer += 'R'
-                cur[1] = [(n-1) % 3, (n-1) // 3]
-        else: # n == 0
-            left_length = abs(cur[0][0] - 1) + abs(cur[0][1] - 3)  # 1 + 1 = 2
-            right_length = abs(cur[1][0] - 1) + abs(cur[1][1] - 3) # 1 + 0 = 1
+                cur[1] = target
 
-            if left_length == right_length:
-                if hand == 'right':
-                    answer += 'R'
-                    cur[1] = [1, 3]
-                else:
-                    answer += 'L'
-                    cur[0] = [1, 3]
-            elif left_length < right_length:
-                answer += 'L'
-                cur[0] = [1, 3]
-            else:
-                answer += 'R'
-                cur[1] = [1, 3]
-            
-    
     return answer
