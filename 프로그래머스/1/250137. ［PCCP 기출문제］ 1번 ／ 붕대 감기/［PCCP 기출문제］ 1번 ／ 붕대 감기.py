@@ -7,17 +7,17 @@ def solution(bandage, health, attacks):
         if i != attacks[0][0]:
             count += 1 # 1
             
-            # 체력 회복
-            cur_health += bandage[1] # 5
-            if cur_health > health:
-                cur_health = health
                 
             # 연속 성공
             if count == bandage[0]:
                 cur_health += bandage[2]
-                if cur_health > health:
-                    cur_health = health
                 count = 0
+            
+            # 체력 회복
+            cur_health += bandage[1] # 5
+            if cur_health > health:
+                cur_health = health
+            
         else:
             cur_health -= attacks[0][1]
             count = 0
