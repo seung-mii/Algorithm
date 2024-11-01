@@ -16,12 +16,8 @@ def solution(friends, gifts):
         for j in range(len(people)):
             if people[i][j] > people[j][i]:
                 gift[i] += 1
-            elif people[i][j] < people[j][i]:
-                gift[j] += 1
-            else:
+            elif people[i][j] == people[j][i]:
                 if cnt[friends[i]] > cnt[friends[j]]:
                     gift[i] += 1
-                elif cnt[friends[i]] < cnt[friends[j]]:
-                    gift[j] += 1
                     
-    return max(gift) // 2
+    return max(gift)
