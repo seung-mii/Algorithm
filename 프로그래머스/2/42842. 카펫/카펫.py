@@ -1,7 +1,7 @@
 def solution(brown, yellow):
     total = brown + yellow
     
-    for height in range(3, total // 2 + 1):
+    for height in range(3, total):
         width = total // height
             
         if width >= height:
