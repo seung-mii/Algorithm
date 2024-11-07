@@ -1,28 +1,15 @@
 def solution(n, words):
-    index = -1
-    dup = []
-    
-    for i in range(len(words)-1):
-        cnt, net = words[i], words[i+1]
-        
-        # 끝말 안잇기
-        if cnt[-1] != net[0]:
-            index = i+1
+    answer = []
+    turn = 0
+    wordList = [words[0]]
+
+    for idx in range(1, len(words)):
+        if words[idx-1][-1] != words[idx][0] or words[idx] in wordList:
+            turn = idx
             break
+        wordList.append(words[idx])
         
-        # 중복
-        if words.count(cnt) > 1:
-            if cnt not in dup:
-                dup.append(cnt)
-            else:
-                index = i
-                break
-        if words.count(net) > 1:
-            if net not in dup:
-                dup.append(cnt)
-            else:
-                index = i+1
-                break
-            
-    answer = [(index % n) + 1, (index // n) + 1] if index != -1 else [0, 0]
+    answer = [turn % n + 1, turn // n + 1]
+    if turn == 0:
+        answer = [0, 0]
     return answer
