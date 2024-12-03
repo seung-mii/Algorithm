@@ -1,14 +1,14 @@
 def solution(clothes):
-    from collections import defaultdict
+    clothes_type = {}
 
-    dic = defaultdict(int)
-    
-    for c in clothes:
-        dic[c[1]] += 1
-    
-    answer = 1
-    for count in dic.values():
-        print(count)
-        answer *= (count + 1)  
-    
-    return answer - 1
+    for c, t in clothes:
+        if t not in clothes_type:
+            clothes_type[t] = 2
+        else:
+            clothes_type[t] += 1
+
+    cnt = 1
+    for num in clothes_type.values():
+        cnt *= num
+
+    return cnt - 1
