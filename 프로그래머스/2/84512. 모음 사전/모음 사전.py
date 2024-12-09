@@ -1,19 +1,13 @@
 def solution(word):
-    num = 0
-    dic = ['A', 'E', 'I', 'O', 'U']
-    
-    def dfs(w, s):
-        nonlocal num
+    vowels = ['A', 'E', 'I', 'O', 'U']
+    answer = 0
 
-        if s == w:
-            return num
+    for i, char in enumerate(word):
+        index = vowels.index(char)
         
-        if len(s) < 5:
-            for d in dic:
-                num += 1
-                result = dfs(w, s + d)
-                
-                if result is not None:
-                    return result
-        
-    return dfs(word, "")
+        for j in range(5 - i):
+            answer += index * (5 ** j)
+            
+        answer += 1 
+
+    return answer
