@@ -4,12 +4,14 @@ def solution(scoville, K):
     heapq.heapify(scoville)
     answer = 0
     
+    print('@@ :: ', scoville)
     while len(scoville) > 1 and scoville[0] < K:
         first = heapq.heappop(scoville)
         second = heapq.heappop(scoville)
         result = first + second * 2
         heapq.heappush(scoville, result)
         answer += 1
+        print(scoville)
     
     if scoville[0] < K:
         return -1
